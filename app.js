@@ -25,7 +25,7 @@ $(document).ready(function() {
             for (var i = 0; i < areaList.length; i++) {
                 if (areaList[i].brewery.images) {
 
-                    gridAppend.append('<div class="five wide column"><img src="' + areaList[i].brewery.images.squareMedium + '" id="' + areaList[i].brewery.id + '"></div>');
+                    gridAppend.append('<div class="five wide column"><img src="' + areaList[i].brewery.images.squareMedium + '" id="' + areaList[i].id + '"></div>');
                 } else {}
             }
         });
@@ -34,15 +34,17 @@ $(document).ready(function() {
 
     $('#gridArea').on('click', 'img', function(event) {
         event.preventDefault();
-        var idOfthingClicked = '#' + this.id;
+        var idOfthingClicked = "#" + this.id;
         console.log(idOfthingClicked);
         $('img').addClass('active')
-        $('img').not($(idOfthingClicked)).addClass('inactive')
+        $('img').not(idOfthingClicked).addClass('inactive')
+
+        var idOfthingClickedWithoutOctothorpe = idOfthingClicked.slice(1)
 
         $.ajax({
-            url: 'http://cors-anywhere.herokuapp.com/http://api.brewerydb.com/v2/breweries?key=a9ddabe16a77f96f264928080e0864ce&ids=' + idOfthingClicked,
+            url: 'http://cors-anywhere.herokuapp.com/http://api.brewerydb.com/v2/location/' + idOfthingClickedWithoutOctothorpe + '?key=a9ddabe16a77f96f264928080e0864ce'
         }).done(function(results) {
-            console.log(results.data[0].description);
+            console.log(results.data.brewery.description);
         });
     })
 
