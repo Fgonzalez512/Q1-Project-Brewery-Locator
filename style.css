@@ -13,13 +13,27 @@
 
 .active {
     display: block;
-    height: 250px;
-    width: 250px;
-    top: 100px;
-    left: 100px;
+    height: 300px;
+    width: 300px;
+    top: 5px;
+    left: 20px;
     position: fixed;
 }
 
 .inactive {
     display: none;
+}
+
+.description {
+    display: block;
+    top: 100px;
+    position: relative;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+#breweryDetails {
+    position: absolute;
+    bottom: 100px;
+    padding: 20px;
 }
