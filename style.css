@@ -1,7 +1,7 @@
-body {
+/*body {
     background-image: url(wallpapers-for-beer-background.jpg);
     background-position: center;
-}
+}*/
 
 #barDiv {
     position: absolute;
@@ -9,4 +9,17 @@ body {
     left: 40%;
     margin-top: -50px;
     margin-left: -30px;
+}
+
+.active {
+    display: block;
+    height: 250px;
+    width: 250px;
+    top: 100px;
+    left: 100px;
+    position: fixed;
+}
+
+.inactive {
+    display: none;
 }
