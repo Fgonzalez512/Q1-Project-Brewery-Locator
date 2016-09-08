@@ -67,14 +67,26 @@ $(document).ready(function() {
             }).done(function(results) {
                 beerInfo = results.data;
                 for (var i = 0; i < beerInfo.length; i++) {
-                    console.log(beerInfo[i]);
-                    beerAppend.append('<div class="item" id="beerLine"></div>');
+                    beerAppend.append('<div class="item" id="beerLine"</div>');
+                    // console.log(beerInfo[i].style.description);
                     if (beerInfo[i].labels) {
                         $(beerAppend).append('<img class="ui avatar image" src="' + beerInfo[i].labels.icon + '" id="icon" >');
                     }
-                    $(beerAppend).append('<div class="content" id="abv">' + beerInfo[i].style.abvMin + " to " + beerInfo[i].style.abvMax + " abv" +
-                        '</div>');
-                    $(beerAppend).append('<div class="header">' + beerInfo[i].name + '</div>');
+                    $(beerAppend).append('<div class="header listName" id="' + i + '">' + beerInfo[i].name + '</div>');
+                    if (!!beerInfo[i].style.abvMin) {
+                        $(beerAppend).append('<div class="content" id="abv">' + beerInfo[i].style.abvMin + " to " + beerInfo[i].style.abvMax + " abv" +
+                            '</div>');
+                    }
+                    (function(beer, id) {
+                        $('#' + id).on('mouseenter', function(event) {
+                            $(this).append('<div>' + " - " + beer.style.description + '</div>');
+                        });
+                        $('#' + id).on('mouseleave', function(event) {
+                            console.log("mouseleave");
+                            $(this).children('div').remove();
+                        });
+                    })(beerInfo[i], i)
+
                 }
             });
 
@@ -82,7 +94,8 @@ $(document).ready(function() {
     })
 
 
-
-
-
 })
+
+
+
+// beer.style.description

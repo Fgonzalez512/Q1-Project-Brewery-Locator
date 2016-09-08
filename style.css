@@ -6,15 +6,18 @@
 #barDiv {
     position: absolute;
     top: 45%;
-    left: 40%;
+    left: 45%;
     margin-top: -50px;
-    margin-left: -30px;
+    margin-left: -50px;
+}
+
+.ui.grid {
+    text-align: center;
 }
 
 .active {
-    display: block;
-    height: 300px;
-    width: 300px;
+    height: 200px;
+    width: 200px;
     top: 5px;
     left: 20px;
     position: fixed;
@@ -34,14 +37,15 @@
 
 #breweryDetails {
     position: absolute;
-    bottom: 100px;
+    bottom: 20%;
     padding: 20px;
 }
 
 #celled {
-    position: fixed;
-    top: 75%;
-    right: 35%;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    margin: auto;
 }
 
 .ui.image {
