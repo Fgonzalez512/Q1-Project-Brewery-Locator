@@ -21,7 +21,7 @@ $(document).ready(function() {
         event.preventDefault();
 
         $.ajax({
-            url: 'http://cors-anywhere.herokuapp.com/http://api.brewerydb.com/v2/search/geo/point?key=' + key + '&lat=' + lat + '&lng=' + long + '&type=brewery',
+            url: 'https://cors-anywhere.herokuapp.com/https://api.brewerydb.com/v2/search/geo/point?key=' + key + '&lat=' + lat + '&lng=' + long + '&type=brewery',
         }).done(function(results) {
             areaList = results.data;
 
@@ -44,7 +44,7 @@ $(document).ready(function() {
         var locationIdFixed = locationId.slice(1)
 
         $.ajax({
-            url: 'http://cors-anywhere.herokuapp.com/http://api.brewerydb.com/v2/location/' + locationIdFixed + '?key=' + key + ''
+            url: 'https://cors-anywhere.herokuapp.com/https://api.brewerydb.com/v2/location/' + locationIdFixed + '?key=' + key + ''
         }).done(function(results) {
             breweryInfo = results.data;
 
@@ -64,7 +64,7 @@ $(document).ready(function() {
 
 
             $.ajax({
-                url: 'http://cors-anywhere.herokuapp.com/http://api.brewerydb.com/v2/brewery/' + breweryInfo.brewery.id + '/beers?key=' + key,
+                url: 'https://cors-anywhere.herokuapp.com/https://api.brewerydb.com/v2/brewery/' + breweryInfo.brewery.id + '/beers?key=' + key,
             }).done(function(results) {
                 beerInfo = results.data;
                 for (var i = 0; i < beerInfo.length; i++) {
