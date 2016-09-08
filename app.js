@@ -7,6 +7,9 @@ $(document).ready(function() {
     var areaList;
     var breweryInfo;
     var listAppend = $('#breweryDetails')
+    var beerInfo;
+    var beerAppend = $('#celled');
+
 
     navigator.geolocation.getCurrentPosition(function(position) {
         lat = position.coords.latitude;
@@ -59,6 +62,21 @@ $(document).ready(function() {
                 listAppend.append('<div class="item"><a href="' + breweryInfo.website + '">' + breweryInfo.website + '</a></div>');
             }
 
+            $.ajax({
+                url: 'http://cors-anywhere.herokuapp.com/http://api.brewerydb.com/v2/brewery/' + breweryInfo.brewery.id + '/beers?key=' + key,
+            }).done(function(results) {
+                beerInfo = results.data;
+                for (var i = 0; i < beerInfo.length; i++) {
+                    console.log(beerInfo[i]);
+                    beerAppend.append('<div class="item" id="beerLine"></div>');
+                    if (beerInfo[i].labels) {
+                        $(beerAppend).append('<img class="ui avatar image" src="' + beerInfo[i].labels.icon + '" id="icon" >');
+                    }
+                    $(beerAppend).append('<div class="content" id="abv">' + beerInfo[i].style.abvMin + " to " + beerInfo[i].style.abvMax + " abv" +
+                        '</div>');
+                    $(beerAppend).append('<div class="header">' + beerInfo[i].name + '</div>');
+                }
+            });
 
         });
     })
