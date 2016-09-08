@@ -59,8 +59,9 @@ $(document).ready(function() {
                 listAppend.append('<div class="item">' + breweryInfo.hoursOfOperation + '</div>');
             }
             if (!!breweryInfo.website) {
-                listAppend.append('<div class="item"><a href="' + breweryInfo.website + '">' + breweryInfo.website + '</a></div>');
+                listAppend.append('<div class="item"><a href="' + breweryInfo.website + '"><strong>' + breweryInfo.website + '</strong></a></div>');
             }
+
 
             $.ajax({
                 url: 'http://cors-anywhere.herokuapp.com/http://api.brewerydb.com/v2/brewery/' + breweryInfo.brewery.id + '/beers?key=' + key,
@@ -68,7 +69,6 @@ $(document).ready(function() {
                 beerInfo = results.data;
                 for (var i = 0; i < beerInfo.length; i++) {
                     beerAppend.append('<div class="item" id="beerLine"</div>');
-                    // console.log(beerInfo[i].style.description);
                     if (beerInfo[i].labels) {
                         $(beerAppend).append('<img class="ui avatar image" src="' + beerInfo[i].labels.icon + '" id="icon" >');
                     }
@@ -82,7 +82,6 @@ $(document).ready(function() {
                             $(this).append('<div>' + " - " + beer.style.description + '</div>');
                         });
                         $('#' + id).on('mouseleave', function(event) {
-                            console.log("mouseleave");
                             $(this).children('div').remove();
                         });
                     })(beerInfo[i], i)
@@ -96,6 +95,9 @@ $(document).ready(function() {
 
 })
 
-
-
-// beer.style.description
+// listAppend.append('<button class="back">Go Back</button>');
+//
+// $('.back').on('click', function() {
+//     $('img').removeClass('active')
+//     $('img').not(locationId).removeClass('inactive')
+// })
