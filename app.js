@@ -33,6 +33,7 @@ $(document).ready(function() {
             }
         });
         $('#barDiv').hide();
+        $('h1').hide();
     })
 
 
@@ -48,7 +49,6 @@ $(document).ready(function() {
             url: 'https://cors-anywhere.herokuapp.com/https://api.brewerydb.com/v2/location/' + locationIdFixed + '?key=' + key + ''
         }).done(function(results) {
             breweryInfo = results.data;
-            console.log(breweryInfo);
 
             $('#breweryText').addClass('description');
             $('#breweryText').text(breweryInfo.brewery.name + " - " + breweryInfo.brewery.description);
@@ -64,8 +64,6 @@ $(document).ready(function() {
                 listAppend.append('<div class="item"><a href="' + breweryInfo.website + '"><strong>' + breweryInfo.website + '</strong></a></div>');
             }
             listAppend.append('<div><iframe width="450" height="250" frameborder="0" syle="border:0" src="https://www.google.com/maps/embed/v1/directions?key=' + gKey + '&origin=' + lat + "," + long + '&destination=' + breweryInfo.latitude + "," + breweryInfo.longitude + '" allowfullscreen"></iframe></div>');
-
-
 
             $.ajax({
                 url: 'https://cors-anywhere.herokuapp.com/https://api.brewerydb.com/v2/brewery/' + breweryInfo.brewery.id + '/beers?key=' + key,
@@ -94,6 +92,7 @@ $(document).ready(function() {
             });
 
         });
+
     })
 
 
