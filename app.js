@@ -38,10 +38,15 @@ $(document).ready(function() {
 
 
     $('#gridArea').on('click', 'img', function(event) {
-        event.preventDefault();
+        // event.preventDefault();
+        window.open('second.html', '_blank');
+
+
+
         var locationId = "#" + this.id;
-        $('img').addClass('active')
-        $('img').not(locationId).addClass('inactive')
+        console.log(locationId);
+        // $('img').addClass('active')
+        // $('img').not(locationId).addClass('inactive')
 
         var locationIdFixed = locationId.slice(1)
 
